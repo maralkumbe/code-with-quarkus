@@ -1,0 +1,99 @@
+Il progetto code-with-quarkus è stato creato partendo dal quarkus getting started https://quarkus.io/get-started/
+
+In pratica una volta installato il cli quarkus con il comando, il progetto code-with-quarkus 
+si crea semplicemente con il comando:
+
+quarkus create
+
+user1@tuc:~/Documents/gpa/quarkus$ quarkus create
+Creating an app (default project type, see --help).
+Looking for the newly published extensions in registry.quarkus.io
+-----------
+
+applying codestarts...
+📚  java
+🔨  maven
+📦  quarkus
+📝  config-properties
+🔧  dockerfiles
+🔧  maven-wrapper
+🚀  resteasy-codestart
+
+-----------
+[SUCCESS] ✅  quarkus project has been successfully generated in:
+--> /home/user1/Documents/gpa/quarkus/code-with-quarkus
+-----------
+Navigate into this directory and get started: quarkus dev
+
+user1@tuc:~/Documents/gpa/quarkus$ cd code-with-quarkus
+
+user1@tuc:~/Documents/gpa/quarkus/code-with-quarkus$ quarkus dev
+
+--2022-01-25 15:57:21--  https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar
+Saving to: ‘/home/user1/Documents/gpa/quarkus/code-with-quarkus/.mvn/wrapper/maven-wrapper.jar’
+2022-01-25 15:57:21 (1,83 MB/s) - ‘/home/user1/Documents/gpa/quarkus/code-with-quarkus/.mvn/wrapper/maven-wrapper.jar’ saved [50710/50710]
+[INFO] Scanning for projects...
+Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-maven-plugin/2.6.3.Final/quarkus-maven-plugin-2.6.3.Final.pom (5.4 kB at 19 kB/s)
+…
+
+Downloaded from central: https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom-quarkus-platform-properties/2.6.3.Final/quarkus-bom-quarkus-platform-properties-2.6.3.Final.properties (910 B at 13 kB/s)
+[INFO] Invoking org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile) @ code-with-quarkus
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /home/user1/Documents/gpa/quarkus/code-with-quarkus/target/classes
+[INFO] Invoking org.apache.maven.plugins:maven-resources-plugin:2.6:testResources) @ code-with-quarkus
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/user1/Documents/gpa/quarkus/code-with-quarkus/src/test/resources
+[INFO] Invoking io.quarkus.platform:quarkus-maven-plugin:2.6.3.Final:generate-code-tests) @ code-with-quarkus
+[INFO] Invoking org.apache.maven.plugins:maven-compiler-plugin:3.8.1:testCompile) @ code-with-quarkus
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home/user1/Documents/gpa/quarkus/code-with-quarkus/target/test-classes
+…
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2022-01-25 15:58:55,366 INFO  [io.quarkus] (Quarkus Main Thread) code-with-quarkus 1.0.0-SNAPSHOT on JVM (powered by Quarkus 2.6.3.Final) started in 0.284s. Listening on: http://localhost:8080
+2022-01-25 15:58:55,369 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2022-01-25 15:58:55,370 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, resteasy, smallrye-context-propagation, vertx]
+2022-01-25 15:58:55,373 INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 0.305s 
+
+--
+Tests paused
+Press [r] to resume testing, [o] Toggle test output, [h] for more options>
+--
+2022-01-25 16:26:56,971 INFO  [io.qua.test] (Aesh InputStream Reader) Test output enabled
+[h]
+The following commands are currently available:
+
+== Continuous Testing
+
+[r] - Resume testing
+[o] - Toggle test output (enabled)
+
+== Exceptions
+
+[x] - Opens last exception in IDE (None)
+
+== HTTP
+
+[w] - Open the application in a browser
+[d] - Open the Dev UI in a browser
+
+== System
+
+[s] - Force restart
+[i] - Toggle instrumentation based reload (disabled)
+[l] - Toggle live reload (enabled)
+[j] - Toggle log levels (INFO)
+--
+--
+Tests paused
+--
+Tests paused
+Press [r] to resume testing, [o] Toggle test output, [h] for more options>
+
+Hit CTRL+C to stop the application.
+
+Lasciando attiva l'applicazione quarkus in una sessione modifico con un'altra il codice del file .java
+user1@tuc:~/Documents/gpa/quarkus/code-with-quarkus$ vim src/main/java/org/acme/GreetingResource.java 
+return "Ciao RESTEasy";
+e con un refresh del browser http://localhost:8080/hello osservo che ha preso la modifica senza nessuna compilazione perché siamo in quarkus dev cioè in development mode con live coding activated: "The act of refreshing the browser triggers a scan of the workspace, and if any changes are detected the Java files are compiled, and the application is redeployed"
