@@ -27,6 +27,12 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <!--aggiungo openshift per fare il build s2i-->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-openshift</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
